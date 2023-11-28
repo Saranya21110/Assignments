@@ -1,0 +1,50 @@
+package pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.remote.RemoteWebDriver;
+
+import base.BaseClass;
+
+public class LoginPage extends BaseClass {
+	
+	public LoginPage (RemoteWebDriver driver) {
+		this.driver=driver;
+	}
+	
+	public LoginPage enterUsername(String uName) {
+		driver.findElement(By.xpath("(//form[@id='login_register_otp_form']//input)[1]")).sendKeys(uName);
+		return this;
+		
+	}
+	
+public LoginPage enterClick() {
+	driver.findElement(By.xpath("//button[text()='Send OTP']")).click();
+	return this;
+		
+	}
+
+public LoginPage enterOtp(String pWord) {
+	driver.findElement(By.xpath("(//form[@id='login_register_otp_form']//input)[2]")).sendKeys(pWord);
+	return this;
+	
+}
+
+public LoginPage clickSubmit() {
+	driver.findElement(By.xpath("//button[text()='Submit']")).click();
+	return this;
+	
+}
+
+//click HI button
+	public LoginPage clickHi() {
+		driver.findElement(By.xpath("//button[contains(@class,'btn top_profile_btn')]//i")).click();
+		return this;
+
+	}
+	//click My profile
+	public MyProfileUpdate myPrfl() {
+		driver.findElement(By.xpath("(//a[@class='dropdown-item'])[1]")).click();
+		return new MyProfileUpdate(driver);
+
+	}
+}
